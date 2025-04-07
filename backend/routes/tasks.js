@@ -5,17 +5,19 @@ import {
   getTaskById, 
   updateTaskStatus, 
   deleteTask 
-} from '../controllers/taskController.js';
+} from '../controllers/taskController.js'
+
+import validateTask from '../middleware/validateTask.js';
 
 const router = express.Router();
 
-router.post('/', createTask);
+router.post('/', validateTask, createTask);
 
 router.get('/', getTasks);
 
 router.get('/:id', getTaskById);
 
-router.put('/:id/status', updateTaskStatus);
+router.put('/:id/status', validateTask, updateTaskStatus);
 
 router.delete('/:id', deleteTask);
 

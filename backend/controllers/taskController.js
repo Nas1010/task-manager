@@ -12,7 +12,7 @@ export const createTask = async (req, res) => {
     res.status(201).json(result.rows[0]);
   } catch (error) {
     console.error('Error creating task:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    res.status(500).json({ message: 'Failed to create task. Please try again later.' });
   }
 };
 
@@ -23,7 +23,7 @@ export const getTasks = async (req, res) => {
     res.status(200).json(result.rows);
   } catch (error) {
     console.error('Error fetching tasks:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    res.status(500).json({ message: 'Failed to fetch task. Please try again later.' });
   }
 };
 
