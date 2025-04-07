@@ -20,3 +20,5 @@ router.put('/:id/status', updateTaskStatus);
 router.delete('/:id', deleteTask);
 
 export default router;
+
+//Sets up the routes for the tasks
