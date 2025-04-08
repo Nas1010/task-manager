@@ -32,6 +32,10 @@ export const getTaskById = async (req, res) => {
   const { id } = req.params;
 
   try {
+      if (!id) {
+        return res.status(400).json({ message: 'ID parameter is required' });
+      }
+
     const result = await pool.query('SELECT * FROM tasks WHERE id = $1', [id]);
     if (result.rows.length === 0) {
       return res.status(404).json({ message: 'Sorry, task not found' });
