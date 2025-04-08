@@ -60,4 +60,17 @@ describe('Task API', () => {
         expect(res.status).toBe(200);
         expect(res.body.message).toBe('Task deleted');
     });
+
+    test('should return 404 for non-existent task', async () => {
+       
+        const nonExistentId = '11111111-1111-1111-1111-111111111111';
+        
+        const response = await request(app)
+          .get(`/api/tasks/${nonExistentId}`);
+      
+        expect(response.status).toBe(404);
+        expect(response.body).toEqual({
+          message: 'Sorry, task not found'
+        });
+      });
 })
