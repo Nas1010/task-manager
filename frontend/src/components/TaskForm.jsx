@@ -2,17 +2,25 @@ import React, { useState } from 'react';
 import { createTask, updateTask } from '../services/api';
 
 const TaskForm = ({ task, onTaskCreatedOrUpdated }) => {
-  const [name, setName] = useState(task ? task.name : ''); 
+  const [title, setTitle] = useState(task ? task.title : '');
+  const [description, setDescription] = useState(task ? task.description : '');
+  const [status, setStatus] = useState(task ? task.status : 'pending');
+  const [dueDate, setDueDate] = useState(task ? task.due_date : '');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const newTask = {
+      title,
+      description,
+      status,
+      due_date: dueDate,
+    };
 
-    const newTask = { name };
     try {
       if (task) {
-        await updateTask(task.id, newTask); 
+        await updateTask(task.id, newTask);
       } else {
-        await createTask(newTask); 
+        await createTask(newTask);
       }
       onTaskCreatedOrUpdated(); 
     } catch (error) {
@@ -24,18 +32,22 @@ const TaskForm = ({ task, onTaskCreatedOrUpdated }) => {
     <div>
       <h2>{task ? 'Edit Task' : 'Create New Task'}</h2>
       <form onSubmit={handleSubmit} className="govuk-form-group">
-        <label className="govuk-label" htmlFor="taskName">
-          Task Name
-        </label>
-        <input
-          className="govuk-input"
-          type="text"
-          id="taskName"
-          name="taskName"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
+        <label className="govuk-label">Title</label>
+        <input className="govuk-input" value={title} onChange={(e) => setTitle(e.target.value)} required />
+
+        <label className="govuk-label">Description</label>
+        <textarea className="govuk-textarea" value={description} onChange={(e) => setDescription(e.target.value)} required />
+
+        <label className="govuk-label">Status</label>
+        <select className="govuk-select" value={status} onChange={(e) => setStatus(e.target.value)}>
+          <option value="pending">Pending</option>
+          <option value="in_progress">In Progress</option>
+          <option value="completed">Completed</option>
+        </select>
+
+        <label className="govuk-label">Due Date</label>
+        <input className="govuk-input" type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} required />
+
         <button className="govuk-button" type="submit">
           {task ? 'Update Task' : 'Create Task'}
         </button>
@@ -45,4 +57,3 @@ const TaskForm = ({ task, onTaskCreatedOrUpdated }) => {
 };
 
 export default TaskForm;
-

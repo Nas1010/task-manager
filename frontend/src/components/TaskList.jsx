@@ -16,12 +16,11 @@ const TaskList = () => {
       console.error("Error fetching tasks:", error);
     }
   };
-
-  // Function to delete a task
+  
   const deleteTask = async (id) => {
     try {
       await axios.delete(`http://localhost:5000/api/tasks/${id}`);
-      fetchTasks(); // Refresh the task list after deletion
+      fetchTasks(); 
     } catch (error) {
       console.error("Error deleting task:", error);
     }
@@ -50,7 +49,7 @@ const TaskList = () => {
               <td>
                 <button
                   className="govuk-button govuk-button--warning"
-                  onClick={() => deleteTask(task.id)} // Directly call deleteTask
+                  onClick={() => deleteTask(task.id)} 
                 >
                   Delete
                 </button>

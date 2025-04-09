@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.scss'; // Import SCSS for styling
+import '../App.scss'; 
 
 const Navbar = ({ showForm, toggleForm }) => {
   return (
