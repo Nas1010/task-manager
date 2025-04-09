@@ -1,4 +1,8 @@
-@import 'govuk-frontend/govuk/all';  
+$govuk-use-legacy-font: false;
+$govuk-font-family: Arial, sans-serif;
+
+@import 'govuk-frontend/dist/govuk/all';
+
 
 body {
   font-family: 'GDS Transport', sans-serif;
