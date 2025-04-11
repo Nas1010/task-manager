@@ -1,7 +1,6 @@
 import pg from 'pg';  
 import dotenv from 'dotenv'; 
 
-// Ensure this runs before anything else
 dotenv.config();
 
 if (!process.env.DATABASE_URL) {
@@ -15,7 +14,7 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false },
 });
 
-// Test connection
+
 const testConnection = async () => {
   try {
     const res = await pool.query('SELECT NOW()');
