@@ -10,7 +10,7 @@ CRUD operations for tasks (Create, Read, Update, Delete).
 
 ![API Endpoints](frontend/src/assets/api-endpoints.png)
 
-## Tech Stack
+# Tech Stack
 
 Frontend:
 
@@ -38,29 +38,29 @@ Backend:
 
 - Unit Testing: Implemented unit tests using Vitest for both backend and frontend  to ensure all components and features are working as expected.
 
-## Installation Instructions
+# Installation Instructions
 
-# Clone the repository
+## Clone the repository
 git clone git@github.com:Nas1010/task-manager.git
 
-# Navigate into the project folder
+## Navigate into the project folder
 cd task-manager
 
-# Install frontend dependencies
+## Install frontend dependencies
 cd frontend
 npm install
 
-# Install backend dependencies
+## Install backend dependencies
 cd ../backend
 npm install
 
-# Set up environment variables
+## Set up environment variables
 Add your environment variables in .env file
 
-# Run both frontend and backend
+## Run both frontend and backend
 npm run dev
 
-# How to run tests:
+## How to run tests:
 
 - Run frontend tests (using Vitest)
 
