@@ -23,7 +23,7 @@ const TaskList = ({ tasks, deleteTask }) => {
               <td>{new Date(task.due_date).toLocaleDateString()}</td>
               <td>
                 <button
-                  className="govuk-button govuk-button--warning"
+                  className="govuk-button govuk-button--warning button-spacing"
                   onClick={() => deleteTask(task.id)} 
                 >
                   Delete
