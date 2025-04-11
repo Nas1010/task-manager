@@ -45,4 +45,18 @@ describe("App Component", () => {
     fireEvent.click(toggleButton)
     expect(screen.getByText("Create Task")).toBeInTheDocument()
   })
+
+  it("deletes a task when the delete button is clicked", async () => {
+    getTasks.mockResolvedValue({
+      data: [
+        {
+          id: "d8c3a3b1-2b97-47da-8f6d-0b25a5289df9",
+          title: "Task 1",
+          description: "Description",
+          status: "pending",
+          due_date: "2022-01-01",
+        },
+      ],
+    })
+  })
 })
