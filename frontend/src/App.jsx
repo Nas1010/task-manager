@@ -1,8 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
-import { getTasks } from './services/api'; 
+import { getTasks } from './services/api';
+import axios from 'axios';
 import './App.scss';
 
 const App = () => {
@@ -25,9 +25,22 @@ const App = () => {
 
   const toggleForm = () => setShowForm(!showForm);
 
-  const handleTaskCreatedOrUpdated = () => {
-    fetchTasks(); 
-    setShowForm(false); 
+  const handleTaskCreatedOrUpdated = (newTask) => {
+    setTasks(prevTasks => {
+      const updatedTasks = [...prevTasks, newTask];
+      console.log("Updated tasks:", updatedTasks); 
+      return updatedTasks;
+    });
+    setShowForm(false);  
+  };
+
+  const deleteTask = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+      setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
+    } catch (error) {
+      console.error("Error deleting task:", error);
+    }
   };
 
   return (
@@ -39,7 +52,7 @@ const App = () => {
 
       {showForm && <TaskForm onTaskCreatedOrUpdated={handleTaskCreatedOrUpdated} />}
 
-      <TaskList tasks={tasks} /> 
+      <TaskList tasks={tasks} deleteTask={deleteTask} /> 
     </div>
   );
 };

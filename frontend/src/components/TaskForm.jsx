@@ -7,7 +7,7 @@ const TaskForm = ({ task, onTaskCreatedOrUpdated }) => {
   const [status, setStatus] = useState(task ? task.status : 'pending');
   const [dueDate, setDueDate] = useState(task ? task.due_date : '');
 
-  const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault();
     const newTask = {
       title,
@@ -15,19 +15,21 @@ const TaskForm = ({ task, onTaskCreatedOrUpdated }) => {
       status,
       due_date: dueDate,
     };
-
+  
     try {
       if (task) {
         await updateTask(task.id, newTask);
+        onTaskCreatedOrUpdated(); 
       } else {
-        await createTask(newTask);
+        const response = await createTask(newTask);
+        console.log('Newly created task:', response.data);
+        onTaskCreatedOrUpdated(response.data); 
       }
-      onTaskCreatedOrUpdated(); 
     } catch (error) {
       console.error('Error submitting task:', error);
     }
   };
-
+  
   return (
     <div>
       <h2>{task ? 'Edit Task' : 'Create New Task'}</h2>
@@ -57,3 +59,4 @@ const TaskForm = ({ task, onTaskCreatedOrUpdated }) => {
 };
 
 export default TaskForm;
+

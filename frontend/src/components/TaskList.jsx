@@ -1,31 +1,6 @@
-import axios from 'axios';
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-const TaskList = () => {
-  const [tasks, setTasks] = useState([]);
-
-  useEffect(() => {
-    fetchTasks();
-  }, []);
-
-  const fetchTasks = async () => {
-    try {
-      const response = await axios.get('http://localhost:5000/api/tasks');
-      setTasks(response.data); 
-    } catch (error) {
-      console.error("Error fetching tasks:", error);
-    }
-  };
-  
-  const deleteTask = async (id) => {
-    try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`);
-      fetchTasks(); 
-    } catch (error) {
-      console.error("Error deleting task:", error);
-    }
-  };
-
+const TaskList = ({ tasks, deleteTask }) => {
   return (
     <div>
       <h2>Task List</h2>
