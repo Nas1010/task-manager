@@ -40,8 +40,6 @@ Backend:
 
 - Unit Testing: Implemented unit tests using Vitest for both backend and frontend  to ensure all components and features are working as expected.
 
-- End-to-End Testing with Playwright: Simulated user interactions in the browser to ensure the UI and interactions work as expected.
-
 # Installation Instructions
 
 ## Clone the repository
