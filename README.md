@@ -22,6 +22,8 @@ Frontend:
 
 - Sass: A CSS preprocessor for writing cleaner and more maintainable styles.
 
+- Sentry: Integrated for error tracking and monitoring in the frontend to capture and report errors to the Sentry dashboard for debugging.
+
 Backend:
 
 - Express: A minimal and flexible Node.js framework for building the backend API.
@@ -37,6 +39,8 @@ Backend:
 - Supertest: Used to simulate HTTP requests for automated testing of backend API routes.
 
 - Unit Testing: Implemented unit tests using Vitest for both backend and frontend  to ensure all components and features are working as expected.
+
+- End-to-End Testing with Playwright: Simulated user interactions in the browser to ensure the UI and interactions work as expected.
 
 # Installation Instructions
 
