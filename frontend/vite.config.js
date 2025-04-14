@@ -36,10 +36,10 @@ export default defineConfig({
     }
   },
   test: {
-    environment: 'jsdom', // Ensure tests run in jsdom
-    globals: true,         // Optional: allows using global test functions like `describe`, `it`, etc.
+    environment: 'jsdom', 
+    globals: true,         
     coverage: {
-      provider: 'c8',      // Optional: to collect code coverage
+      provider: 'c8',     
     },
   }
 });
