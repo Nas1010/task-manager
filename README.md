@@ -40,6 +40,14 @@ Backend:
 
 - Unit Testing: Implemented unit tests using Vitest for both backend and frontend  to ensure all components and features are working as expected.
 
+# Deployment
+
+- Frontend: Deployed on Vercel
+- Backend: Hosted on Render
+- Database: Managed with Supabase
+
+You can access the live application here: https://task-manager-eight-bay.vercel.app/
+
 # Installation Instructions
 
 ## Clone the repository
