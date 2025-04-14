@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
-import { getTasks } from './services/api';
-import axios from 'axios';
+// import { getTasks } from './services/api';
+// import axios from 'axios';
 import './App.scss';
+import { getTasks, createTask, updateTask, deleteTask } from './services/api';
+
 
 const App = () => {
   const [showForm, setShowForm] = useState(false);
@@ -34,9 +36,18 @@ const App = () => {
     setShowForm(false);  
   };
 
-  const deleteTask = async (id) => {
+  // const deleteTask = async (id) => {
+  //   try {
+  //     await axios.delete(`${API_URL}/${id}`);
+  //     setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
+  //   } catch (error) {
+  //     console.error("Error deleting task:", error);
+  //   }
+  // };
+
+  const deleteTaskHandler = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+      await deleteTask(id); 
       setTasks(prevTasks => prevTasks.filter(task => task.id !== id));
     } catch (error) {
       console.error("Error deleting task:", error);
@@ -52,7 +63,7 @@ const App = () => {
 
       {showForm && <TaskForm onTaskCreatedOrUpdated={handleTaskCreatedOrUpdated} />}
 
-      <TaskList tasks={tasks} deleteTask={deleteTask} /> 
+      <TaskList tasks={tasks} deleteTask={deleteTaskHandler} /> 
     </div>
   );
 };
